@@ -1,0 +1,52 @@
+{
+  "id": "tiered:common",
+  "verifiers": [
+    {
+      "tag": "fabric:helmets"
+    },
+    {
+      "tag": "fabric:chestplates"
+    },
+    {
+      "tag": "fabric:leggings"
+    },
+    {
+      "tag": "fabric:boots"
+    },
+    {
+      "tag": "fabric:swords"
+    },
+    {
+      "tag": "fabric:shovels"
+    },
+    {
+      "tag": "fabric:pickaxes"
+    },
+    {
+      "tag": "fabric:hoes"
+    },
+    {
+      "tag": "fabric:axes"
+    }
+  ],
+  "style": {
+    "color": "GRAY"
+  },
+  "attributes": [
+    {
+      "type": "generic.maxHealth",
+      "modifier": {
+        "name": "tiered:common",
+        "operation": "ADDITION",
+        "amount": 2
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "FEET",
+        "LEGS",
+        "CHEST",
+        "HEAD"
+      ]
+    }
+  ]
+}

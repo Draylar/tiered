@@ -1,0 +1,41 @@
+{
+  "id": "tiered:swift",
+  "verifiers": [
+    {
+      "tag": "fabric:pickaxes"
+    },
+    {
+      "tag": "fabric:shovels"
+    },
+    {
+      "tag": "fabric:axes"
+    }
+  ],
+  "style": {
+    "color": "YELLOW"
+  },
+  "attributes": [
+    {
+      "type": "generic.digSpeed",
+      "modifier": {
+        "name": "tiered:swift",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.10
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    },
+    {
+      "type": "generic.movementSpeed",
+      "modifier": {
+        "name": "tiered:swift",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.10
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    }
+  ]
+}

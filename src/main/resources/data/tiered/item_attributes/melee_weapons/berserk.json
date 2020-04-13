@@ -1,0 +1,60 @@
+{
+  "id": "tiered:berserk",
+  "verifiers": [
+    {
+      "tag": "fabric:swords"
+    },
+    {
+      "tag": "fabric:axes"
+    }
+  ],
+  "style": {
+    "color": "RED"
+  },
+  "attributes": [
+    {
+      "type": "generic.attackDamage",
+      "modifier": {
+        "name": "tiered:berserk",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.25
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    },
+    {
+      "type": "generic.attackSpeed",
+      "modifier": {
+        "name": "tiered:berserk",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": -0.25
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    },
+    {
+      "type": "generic.reach-entity-attributes.reach",
+      "modifier": {
+        "name": "tiered:berserk",
+        "operation": "ADDITION",
+        "amount": -1
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    },
+    {
+      "type": "generic.reach-entity-attributes.attackRange",
+      "modifier": {
+        "name": "tiered:berserk",
+        "operation": "ADDITION",
+        "amount": -1
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    }
+  ]
+}

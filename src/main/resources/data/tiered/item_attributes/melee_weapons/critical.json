@@ -1,0 +1,38 @@
+{
+  "id": "tiered:critical",
+  "verifiers": [
+    {
+      "tag": "fabric:swords"
+    },
+    {
+      "tag": "fabric:axes"
+    }
+  ],
+  "style": {
+    "color": "GREEN"
+  },
+  "attributes": [
+    {
+      "type": "generic.attackDamage",
+      "modifier": {
+        "name": "tiered:critical",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": -0.10
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    },
+    {
+      "type": "generic.critChance",
+      "modifier": {
+        "name": "tiered:critical",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.25
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    }
+  ]
+}

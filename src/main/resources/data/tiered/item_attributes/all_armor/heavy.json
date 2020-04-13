@@ -1,0 +1,36 @@
+{
+  "id": "tiered:heavy",
+  "verifiers": [
+    {
+      "tag": "fabric:helmets"
+    },
+    {
+      "tag": "fabric:chestplates"
+    },
+    {
+      "tag": "fabric:leggings"
+    },
+    {
+      "tag": "fabric:boots"
+    }
+  ],
+  "style": {
+    "color": "DARK_GRAY"
+  },
+  "attributes": [
+    {
+      "type": "generic.knockbackResistance",
+      "modifier": {
+        "name": "tiered:heavy",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.1
+      },
+      "optional_equipment_slots": [
+        "FEET",
+        "LEGS",
+        "CHEST",
+        "HEAD"
+      ]
+    }
+  ]
+}

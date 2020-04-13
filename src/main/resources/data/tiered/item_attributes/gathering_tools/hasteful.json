@@ -1,0 +1,30 @@
+{
+  "id": "tiered:hasteful",
+  "verifiers": [
+    {
+      "tag": "fabric:pickaxes"
+    },
+    {
+      "tag": "fabric:shovels"
+    },
+    {
+      "tag": "fabric:axes"
+    }
+  ],
+  "style": {
+    "color": "GREEN"
+  },
+  "attributes": [
+    {
+      "type": "generic.digSpeed",
+      "modifier": {
+        "name": "tiered:hasteful",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.10
+      },
+      "optional_equipment_slots": [
+        "MAINHAND"
+      ]
+    }
+  ]
+}

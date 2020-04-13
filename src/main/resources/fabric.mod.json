@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "tiered",
+  "version": "${version}",
+  "name": "Tiered",
+  "description": "Adds tiers to tools.",
+  "authors": [
+    "Draylar"
+  ],
+  "license": "CC0-1.0",
+  "icon": "assets/tiered/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "draylar.tiered.Tiered"
+    ]
+  },
+  "mixins": [
+    "tiered.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.8.2+build.194",
+    "fabric": "*",
+    "minecraft": "1.15.2"
+  }
+}

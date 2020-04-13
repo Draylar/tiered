@@ -1,0 +1,97 @@
+{
+  "id": "tiered:legendary",
+  "verifiers": [
+    {
+      "tag": "fabric:helmets"
+    },
+    {
+      "tag": "fabric:chestplates"
+    },
+    {
+      "tag": "fabric:leggings"
+    },
+    {
+      "tag": "fabric:boots"
+    },
+    {
+      "tag": "fabric:swords"
+    },
+    {
+      "tag": "fabric:shovels"
+    },
+    {
+      "tag": "fabric:pickaxes"
+    },
+    {
+      "tag": "fabric:hoes"
+    },
+    {
+      "tag": "fabric:axes"
+    }
+  ],
+  "style": {
+    "color": "GOLD"
+  },
+  "attributes": [
+    {
+      "type": "generic.maxHealth",
+      "modifier": {
+        "name": "tiered:legendary",
+        "operation": "ADDITION",
+        "amount": 10
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "FEET",
+        "LEGS",
+        "CHEST",
+        "HEAD"
+      ]
+    },
+    {
+      "type": "generic.armor",
+      "modifier": {
+        "name": "tiered:legendary",
+        "operation": "ADDITION",
+        "amount": 4
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "FEET",
+        "LEGS",
+        "CHEST",
+        "HEAD"
+      ]
+    },
+    {
+      "type": "generic.luck",
+      "modifier": {
+        "name": "tiered:legendary",
+        "operation": "ADDITION",
+        "amount": 0.5
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "FEET",
+        "LEGS",
+        "CHEST",
+        "HEAD"
+      ]
+    },
+    {
+      "type": "generic.armorToughness",
+      "modifier": {
+        "name": "tiered:legendary",
+        "operation": "ADDITION",
+        "amount": 2
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "FEET",
+        "LEGS",
+        "CHEST",
+        "HEAD"
+      ]
+    }
+  ]
+}
