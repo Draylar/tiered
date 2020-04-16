@@ -34,7 +34,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/effect/StatusEffectUtil;hasHaste(Lnet/minecraft/entity/LivingEntity;)Z"
             ),
-            name = "f"
+            index = 2
     )
     private float getBlockBreakingSpeed(float f) {
         EntityAttributeInstance instance = this.getAttributeInstance(CustomEntityAttributes.DIG_SPEED);
@@ -65,7 +65,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                             ordinal = 1
                     )
             ),
-            name = "bl3"
+            index = 8
     )
     private boolean attack(boolean bl3) {
         float customChance = 0;
