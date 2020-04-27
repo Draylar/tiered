@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.gson.EntityAttributeModifierDeserializer;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
