@@ -26,8 +26,13 @@ dependencies {
 
     modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"
 
-    modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}"
-    include "com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}"
+    modImplementation ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}") {
+        exclude group: "net.fabricmc.fabric-api"
+    }
+
+    include ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}") {
+        exclude group: "net.fabricmc.fabric-api"
+    }
 }
 
 processResources {
