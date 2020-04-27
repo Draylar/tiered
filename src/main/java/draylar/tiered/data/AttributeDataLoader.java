@@ -8,9 +8,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.gson.EntityAttributeModifierDeserializer;
+import draylar.tiered.gson.FormattingDeserializer;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.profiler.Profiler;
 import org.apache.logging.log4j.LogManager;
@@ -26,6 +28,10 @@ public class AttributeDataLoader extends JsonDataLoader {
             .registerTypeAdapter(
                     EntityAttributeModifier.class,
                     new EntityAttributeModifierDeserializer()
+            )
+            .registerTypeAdapter(
+                    Formatting.class,
+                    new FormattingDeserializer()
             ).create();
 
     private static final String PARSING_ERROR_MESSAGE = "Parsing error loading recipe {}";

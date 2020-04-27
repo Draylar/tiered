@@ -12,6 +12,6 @@ public class FormattingDeserializer implements JsonDeserializer<Formatting> {
 
     @Override
     public Formatting deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        return null;
+        return Formatting.byName(json.getAsString().toUpperCase());
     }
 }
