@@ -8,10 +8,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.gson.EntityAttributeModifierDeserializer;
+import draylar.tiered.gson.EquipmentSlotDeserializer;
 import draylar.tiered.gson.FormattingDeserializer;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
+import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.profiler.Profiler;
@@ -25,14 +28,11 @@ public class AttributeDataLoader extends JsonDataLoader {
     private static final Gson GSON = new GsonBuilder()
             .setPrettyPrinting()
             .disableHtmlEscaping()
-            .registerTypeAdapter(
-                    EntityAttributeModifier.class,
-                    new EntityAttributeModifierDeserializer()
-            )
-            .registerTypeAdapter(
-                    Formatting.class,
-                    new FormattingDeserializer()
-            ).create();
+            .registerTypeAdapter(EntityAttributeModifier.class, new EntityAttributeModifierDeserializer())
+            .registerTypeAdapter(EquipmentSlot.class, new EquipmentSlotDeserializer())
+            .registerTypeHierarchyAdapter(Style.class, new Style.Serializer())
+            .registerTypeAdapter(Formatting.class, new FormattingDeserializer())
+            .create();
 
     private static final String PARSING_ERROR_MESSAGE = "Parsing error loading recipe {}";
     private static final String LOADED_RECIPES_MESSAGE = "Loaded {} recipes";
