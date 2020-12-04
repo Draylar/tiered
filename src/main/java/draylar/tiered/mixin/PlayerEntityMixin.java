@@ -1,9 +1,9 @@
 package draylar.tiered.mixin;
 
 import draylar.tiered.api.CustomEntityAttributes;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Slice;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
@@ -22,10 +22,13 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         super(type, world);
     }
 
-    @Inject(method = "initAttributes", at = @At("RETURN"))
-    private void initAttributes(CallbackInfo ci) {
-        this.getAttributes().register(CustomEntityAttributes.DIG_SPEED);
-        this.getAttributes().register(CustomEntityAttributes.CRIT_CHANCE);
+    @Inject(
+            method = "createPlayerAttributes",
+            at = @At("RETURN")
+    )
+    private static void initAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> ci) {
+        ci.getReturnValue().add(CustomEntityAttributes.CRIT_CHANCE);
+        ci.getReturnValue().add(CustomEntityAttributes.DIG_SPEED);
     }
 
     @ModifyVariable(
@@ -40,7 +43,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         EntityAttributeInstance instance = this.getAttributeInstance(CustomEntityAttributes.DIG_SPEED);
 
         for (EntityAttributeModifier modifier : instance.getModifiers()) {
-            float amount = (float) modifier.getAmount();
+            float amount = (float) modifier.getValue();
 
             if (modifier.getOperation() == EntityAttributeModifier.Operation.ADDITION) {
                 f += amount;
@@ -73,7 +76,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         EntityAttributeInstance instance = this.getAttributeInstance(CustomEntityAttributes.CRIT_CHANCE);
 
         for (EntityAttributeModifier modifier : instance.getModifiers()) {
-            float amount = (float) modifier.getAmount();
+            float amount = (float) modifier.getValue();
             customChance += amount;
         }
 

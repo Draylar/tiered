@@ -26,7 +26,7 @@ Tiered is entirely data-driven, which means you can add, modify, and remove modi
   },
   "attributes": [
     {
-      "type": "generic.digSpeed",
+      "type": "generic.dig_speed",
       "modifier": {
         "name": "tiered:hasteful",
         "operation": "MULTIPLY_TOTAL",

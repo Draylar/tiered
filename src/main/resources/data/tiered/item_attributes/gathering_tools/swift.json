@@ -12,11 +12,11 @@
     }
   ],
   "style": {
-    "color": "YELLOW"
+    "color": "yellow"
   },
   "attributes": [
     {
-      "type": "generic.digSpeed",
+      "type": "tiered:generic.dig_speed",
       "modifier": {
         "name": "tiered:swift",
         "operation": "MULTIPLY_TOTAL",
@@ -27,7 +27,7 @@
       ]
     },
     {
-      "type": "generic.movementSpeed",
+      "type": "generic.movement_speed",
       "modifier": {
         "name": "tiered:swift",
         "operation": "MULTIPLY_TOTAL",

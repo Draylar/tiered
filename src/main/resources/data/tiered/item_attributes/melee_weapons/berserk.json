@@ -9,11 +9,11 @@
     }
   ],
   "style": {
-    "color": "RED"
+    "color": "red"
   },
   "attributes": [
     {
-      "type": "generic.attackDamage",
+      "type": "generic.attack_damage",
       "modifier": {
         "name": "tiered:berserk",
         "operation": "MULTIPLY_TOTAL",
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "type": "generic.attackSpeed",
+      "type": "generic.attack_speed",
       "modifier": {
         "name": "tiered:berserk",
         "operation": "MULTIPLY_TOTAL",
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "type": "generic.reach-entity-attributes.reach",
+      "type": "reach-entity-attributes:reach",
       "modifier": {
         "name": "tiered:berserk",
         "operation": "ADDITION",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "type": "generic.reach-entity-attributes.attackRange",
+      "type": "reach-entity-attributes:attack_range",
       "modifier": {
         "name": "tiered:berserk",
         "operation": "ADDITION",

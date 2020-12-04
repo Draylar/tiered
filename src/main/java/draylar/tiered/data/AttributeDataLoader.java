@@ -2,19 +2,18 @@ package draylar.tiered.data;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
 import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.gson.EntityAttributeModifierDeserializer;
 import draylar.tiered.gson.EquipmentSlotDeserializer;
 import draylar.tiered.gson.FormattingDeserializer;
+import draylar.tiered.gson.TextColorDeserializer;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.text.Style;
+import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.profiler.Profiler;
@@ -31,7 +30,6 @@ public class AttributeDataLoader extends JsonDataLoader {
             .registerTypeAdapter(EntityAttributeModifier.class, new EntityAttributeModifierDeserializer())
             .registerTypeAdapter(EquipmentSlot.class, new EquipmentSlotDeserializer())
             .registerTypeHierarchyAdapter(Style.class, new Style.Serializer())
-            .registerTypeAdapter(Formatting.class, new FormattingDeserializer())
             .create();
 
     private static final String PARSING_ERROR_MESSAGE = "Parsing error loading recipe {}";
@@ -45,10 +43,10 @@ public class AttributeDataLoader extends JsonDataLoader {
     }
 
     @Override
-    protected void apply(Map<Identifier, JsonObject> loader, ResourceManager manager, Profiler profiler) {
+    protected void apply(Map<Identifier, JsonElement> loader, ResourceManager manager, Profiler profiler) {
         Map<Identifier, PotentialAttribute> readItemAttributes = Maps.newHashMap();
 
-        for (Map.Entry<Identifier, JsonObject> entry : loader.entrySet()) {
+        for (Map.Entry<Identifier, JsonElement> entry : loader.entrySet()) {
             Identifier identifier = entry.getKey();
 
             try {

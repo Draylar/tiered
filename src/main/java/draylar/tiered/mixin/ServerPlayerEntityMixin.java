@@ -6,8 +6,9 @@ import draylar.tiered.api.ModifierUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.DefaultedList;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -20,8 +21,8 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
     private DefaultedList<ItemStack> mainCopy = null;
 
-    public ServerPlayerEntityMixin(World world, GameProfile profile) {
-        super(world, profile);
+    private ServerPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile) {
+        super(world, pos, yaw, profile);
     }
 
     @Inject(method = "tick", at = @At("HEAD"))

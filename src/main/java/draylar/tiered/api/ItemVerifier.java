@@ -39,7 +39,7 @@ public class ItemVerifier {
         if(id != null) {
             return itemID.equals(id);
         } else if(tag != null) {
-            Tag<Item> itemTag = ItemTags.getContainer().get(new Identifier(tag));
+            Tag<Item> itemTag = ItemTags.getTagGroup().getTag(new Identifier(tag));
 
             if(itemTag != null) {
                 return itemTag.contains(Registry.ITEM.get(new Identifier(itemID)));

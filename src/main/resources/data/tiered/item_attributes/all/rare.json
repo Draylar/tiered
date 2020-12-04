@@ -30,11 +30,11 @@
     }
   ],
   "style": {
-    "color": "BLUE"
+    "color": "blue"
   },
   "attributes": [
     {
-      "type": "generic.maxHealth",
+      "type": "generic.max_health",
       "modifier": {
         "name": "tiered:rare",
         "operation": "ADDITION",

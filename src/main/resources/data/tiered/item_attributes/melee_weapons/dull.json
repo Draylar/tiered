@@ -9,11 +9,11 @@
     }
   ],
   "style": {
-    "color": "GRAY"
+    "color": "gray"
   },
   "attributes": [
     {
-      "type": "generic.attackDamage",
+      "type": "generic.attack_damage",
       "modifier": {
         "name": "tiered:dull",
         "operation": "MULTIPLY_TOTAL",

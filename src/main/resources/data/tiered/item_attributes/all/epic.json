@@ -30,11 +30,11 @@
     }
   ],
   "style": {
-    "color": "DARK_PURPLE"
+    "color": "dark_purple"
   },
   "attributes": [
     {
-      "type": "generic.maxHealth",
+      "type": "generic.max_health",
       "modifier": {
         "name": "tiered:epic",
         "operation": "ADDITION",
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "type": "generic.armorToughness",
+      "type": "generic.armor_toughness",
       "modifier": {
         "name": "tiered:legendary",
         "operation": "ADDITION",

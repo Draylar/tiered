@@ -12,11 +12,11 @@
     }
   ],
   "style": {
-    "color": "GREEN"
+    "color": "green"
   },
   "attributes": [
     {
-      "type": "generic.digSpeed",
+      "type": "tiered:generic.dig_speed",
       "modifier": {
         "name": "tiered:hasteful",
         "operation": "MULTIPLY_TOTAL",

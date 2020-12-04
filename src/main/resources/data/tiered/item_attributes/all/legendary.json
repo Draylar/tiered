@@ -30,11 +30,11 @@
     }
   ],
   "style": {
-    "color": "GOLD"
+    "color": "gold"
   },
   "attributes": [
     {
-      "type": "generic.maxHealth",
+      "type": "generic.max_health",
       "modifier": {
         "name": "tiered:legendary",
         "operation": "ADDITION",
@@ -79,7 +79,7 @@
       ]
     },
     {
-      "type": "generic.armorToughness",
+      "type": "generic.armor_toughness",
       "modifier": {
         "name": "tiered:legendary",
         "operation": "ADDITION",

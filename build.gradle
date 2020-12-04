@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.2.7-SNAPSHOT'
+    id 'fabric-loom' version '0.5-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -7,14 +7,15 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version
+version = project.mod_version + "-" + project.minecraft_version
 group = project.maven_group
 
 minecraft {
 }
 
 repositories {
-    maven {url "https://maven.jamieswhiteshirt.com/libs-release/"}
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://jitpack.io' }
     maven { url 'https://jitpack.io' }
 }
 
@@ -26,11 +27,11 @@ dependencies {
 
     modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"
 
-    modImplementation ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}") {
+    modCompile ("com.github.Draylar:reach-entity-attributes:1.0.2") {
         exclude group: "net.fabricmc.fabric-api"
     }
 
-    include ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}") {
+    include ("com.github.Draylar:reach-entity-attributes:1.0.2") {
         exclude group: "net.fabricmc.fabric-api"
     }
 }

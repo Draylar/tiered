@@ -4,10 +4,15 @@ import draylar.tiered.api.CustomEntityAttributes;
 import draylar.tiered.api.FabricArmorTags;
 import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.data.AttributeDataLoader;
+import draylar.tiered.mixin.ServerResourceManagerMixin;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.client.ItemTooltipCallback;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +24,7 @@ public class Tiered implements ModInitializer {
 
     /**
      * Attribute Data Loader instance which handles loading attribute .json files from "data/modid/item_attributes".
-     * <p> This field is registered to the server's data manager in {@link draylar.tiered.mixin.MinecraftServerMixin}
+     * <p> This field is registered to the server's data manager in {@link ServerResourceManagerMixin}
      */
     public static final AttributeDataLoader ATTRIBUTE_DATA_LOADER = new AttributeDataLoader();
 
@@ -43,7 +48,7 @@ public class Tiered implements ModInitializer {
         CustomEntityAttributes.init();
 
         if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-            setupModifierLabel();
+//            setupModifierLabel();
         }
     }
 
@@ -76,5 +81,14 @@ public class Tiered implements ModInitializer {
                 }
             }
         });
+    }
+
+    public static boolean isPreferredEquipmentSlot(ItemStack stack, EquipmentSlot slot) {
+        if(stack.getItem() instanceof ArmorItem) {
+            ArmorItem item = (ArmorItem) stack.getItem();
+            return item.getSlotType().equals(slot);
+        }
+
+        return slot == EquipmentSlot.MAINHAND;
     }
 }

@@ -4,7 +4,11 @@ import com.google.common.collect.Multimap;
 import com.google.gson.annotations.SerializedName;
 import draylar.tiered.Tiered;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.ClampedEntityAttribute;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 /**
  * Stores information on an AttributeModifier template applied to an ItemStack.
@@ -54,14 +58,19 @@ public class AttributeTemplate {
      * @param multimap  map to add {@link AttributeTemplate}
      * @param slot
      */
-    public void realize(Multimap<String, EntityAttributeModifier> multimap, EquipmentSlot slot) {
+    public void realize(Multimap<EntityAttribute, EntityAttributeModifier> multimap, EquipmentSlot slot) {
         EntityAttributeModifier cloneModifier = new EntityAttributeModifier(
                 Tiered.MODIFIERS[slot.getArmorStandSlotId()],
                 entityAttributeModifier.getName() + "_" + slot.getName(),
-                entityAttributeModifier.getAmount(),
+                entityAttributeModifier.getValue(),
                 entityAttributeModifier.getOperation()
         );
 
-        multimap.put(this.attributeTypeID, cloneModifier);
+        EntityAttribute key = Registry.ATTRIBUTE.get(new Identifier(attributeTypeID));
+        if(key == null) {
+            Tiered.LOGGER.warn(String.format("%s was referenced as an attribute type, but it does not exist! A data file in /tiered/item_attributes/ has an invalid type property.", attributeTypeID));
+        } else {
+            multimap.put(key, cloneModifier);
+        }
     }
 }

@@ -18,11 +18,11 @@
     }
   ],
   "style": {
-    "color": "DARK_PURPLE"
+    "color": "dark_purple"
   },
   "attributes": [
     {
-      "type": "generic.reach-entity-attributes.reach",
+      "type": "reach-entity-attributes:reach",
       "modifier": {
         "name": "tiered:extended",
         "operation": "ADDITION",
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "type": "generic.reach-entity-attributes.attackRange",
+      "type": "reach-entity-attributes:attack_range",
       "modifier": {
         "name": "tiered:extended",
         "operation": "ADDITION",

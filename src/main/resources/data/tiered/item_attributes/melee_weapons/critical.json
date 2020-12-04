@@ -9,11 +9,11 @@
     }
   ],
   "style": {
-    "color": "GREEN"
+    "color": "green"
   },
   "attributes": [
     {
-      "type": "generic.attackDamage",
+      "type": "generic.attack_damage",
       "modifier": {
         "name": "tiered:critical",
         "operation": "MULTIPLY_TOTAL",
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "type": "generic.critChance",
+      "type": "tiered:generic.crit_chance",
       "modifier": {
         "name": "tiered:critical",
         "operation": "MULTIPLY_TOTAL",

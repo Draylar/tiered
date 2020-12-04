@@ -3,11 +3,10 @@
   "package": "draylar.tiered.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ItemMixin",
     "ItemStackMixin",
-    "MinecraftServerMixin",
     "PlayerEntityMixin",
-    "ServerPlayerEntityMixin"
+    "ServerPlayerEntityMixin",
+    "ServerResourceManagerMixin"
   ],
   "client": [
     "ItemStackClientMixin"

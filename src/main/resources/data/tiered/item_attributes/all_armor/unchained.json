@@ -15,7 +15,7 @@
     }
   ],
   "style": {
-    "color": "DARK_RED"
+    "color": "dark_red"
   },
   "attributes": [
     {
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "type": "generic.attackDamage",
+      "type": "generic.attack_damage",
       "modifier": {
         "name": "tiered:unchained",
         "operation": "MULTIPLY_TOTAL",
