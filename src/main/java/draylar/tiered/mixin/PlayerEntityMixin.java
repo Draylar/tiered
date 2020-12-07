@@ -42,13 +42,15 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     private float getBlockBreakingSpeed(float f) {
         EntityAttributeInstance instance = this.getAttributeInstance(CustomEntityAttributes.DIG_SPEED);
 
-        for (EntityAttributeModifier modifier : instance.getModifiers()) {
-            float amount = (float) modifier.getValue();
+        if(instance != null) {
+            for (EntityAttributeModifier modifier : instance.getModifiers()) {
+                float amount = (float) modifier.getValue();
 
-            if (modifier.getOperation() == EntityAttributeModifier.Operation.ADDITION) {
-                f += amount;
-            } else {
-                f *= (amount + 1);
+                if (modifier.getOperation() == EntityAttributeModifier.Operation.ADDITION) {
+                    f += amount;
+                } else {
+                    f *= (amount + 1);
+                }
             }
         }
 
@@ -75,9 +77,11 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
         EntityAttributeInstance instance = this.getAttributeInstance(CustomEntityAttributes.CRIT_CHANCE);
 
-        for (EntityAttributeModifier modifier : instance.getModifiers()) {
-            float amount = (float) modifier.getValue();
-            customChance += amount;
+        if(instance != null) {
+            for (EntityAttributeModifier modifier : instance.getModifiers()) {
+                float amount = (float) modifier.getValue();
+                customChance += amount;
+            }
         }
 
         return bl3 || world.random.nextDouble() < customChance;
