@@ -1,3 +1,8 @@
 # Project exclude paths
 /.gradle/
 /build/
+/run/
+/.idea/
+/tiered.iml
+/tiered.ipr
+/tiered.iws
