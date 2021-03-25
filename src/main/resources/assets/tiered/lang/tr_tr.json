@@ -1,0 +1,29 @@
+{
+  "generic.dig_speed": "Kazma hızı",
+  "generic.crit_chance": "Kritikal şansı",
+
+  "tiered:common.label": "Yaygın",
+  "tiered:rare.label": "Nadir",
+  "tiered:epic.label": "Epik",
+  "tiered:legendary.label": "Efsanevi",
+
+  "tiered:dented.label": "Girintili",
+  "tiered:fortified.label": "Takviye edilmiş",
+  "tiered:heavy.label": "Ağır",
+  "tiered:reinforced.label": "Takviyeli",
+  "tiered:resilient.label": "Esnek",
+  "tiered:unchained.label": "Zincirsiz",
+
+  "tiered:extended.label": "Genişletilmiş",
+
+  "tiered:lucky.label": "Şanslı",
+
+  "tiered:hasteful.label": "Aceleci",
+  "tiered:swift.label": "Hızlı",
+
+  "tiered:berserk.label": "Çılgın",
+  "tiered:critical.label": "Kritikal",
+  "tiered:dull.label": "Donuk",
+  "tiered:keen.label": "Şahane",
+  "tiered:sharp.label": "Keskin"
+}
