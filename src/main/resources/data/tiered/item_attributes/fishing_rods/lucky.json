@@ -10,7 +10,7 @@
   },
   "attributes": [
     {
-      "type": "generic.lucky",
+      "type": "generic.luck",
       "modifier": {
         "name": "tiered:lucky",
         "operation": "MULTIPLY_TOTAL",
