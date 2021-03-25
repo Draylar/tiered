@@ -1,7 +1,7 @@
 package draylar.tiered;
 
 import draylar.tiered.api.CustomEntityAttributes;
-import draylar.tiered.api.FabricArmorTags;
+import draylar.tiered.api.TieredItemTags;
 import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.data.AttributeDataLoader;
 import draylar.tiered.mixin.ServerResourceManagerMixin;
@@ -47,7 +47,7 @@ public class Tiered implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        FabricArmorTags.init();
+        TieredItemTags.init();
         CustomEntityAttributes.init();
         registerAttributeSyncer();
 

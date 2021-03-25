@@ -5,14 +5,15 @@ import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 
-public class FabricArmorTags {
+public class TieredItemTags {
 
     public static final Tag<Item> HELMETS = register("helmets");
     public static final Tag<Item> CHESTPLATES = register("chestplates");
     public static final Tag<Item> LEGGINGS = register("leggings");
     public static final Tag<Item> BOOTS = register("boots");
+    public static final Tag<Item> SHIELDS = register("shields");
 
-    private FabricArmorTags() { }
+    private TieredItemTags() { }
 
     public static void init() {
 
