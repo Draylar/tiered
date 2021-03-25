@@ -7,6 +7,10 @@
   "authors": [
     "Draylar"
   ],
+  "contact": {
+    "issues": "https://github.com/Draylar/tiered/issues",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/tiered"
+  },
   "license": "CC0-1.0",
   "icon": "assets/tiered/icon.png",
   "environment": "*",
