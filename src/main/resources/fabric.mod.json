@@ -13,6 +13,9 @@
   "entrypoints": {
     "main": [
       "draylar.tiered.Tiered"
+    ],
+    "client": [
+      "draylar.tiered.TieredClient"
     ]
   },
   "mixins": [

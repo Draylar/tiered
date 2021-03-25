@@ -5,14 +5,16 @@ import draylar.tiered.api.FabricArmorTags;
 import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.data.AttributeDataLoader;
 import draylar.tiered.mixin.ServerResourceManagerMixin;
+import io.netty.buffer.Unpooled;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.client.ItemTooltipCallback;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +41,7 @@ public class Tiered implements ModInitializer {
 
     public static final Logger LOGGER = LogManager.getLogger();
 
+    public static final Identifier ATTRIBUTE_SYNC_PACKET = new Identifier("attribute_sync");
     public static final String NBT_SUBTAG_KEY = "Tiered";
     public static final String NBT_SUBTAG_DATA_KEY = "Tier";
 
@@ -46,6 +49,7 @@ public class Tiered implements ModInitializer {
     public void onInitialize() {
         FabricArmorTags.init();
         CustomEntityAttributes.init();
+        registerAttributeSyncer();
 
         if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
 //            setupModifierLabel();
@@ -90,5 +94,23 @@ public class Tiered implements ModInitializer {
         }
 
         return slot == EquipmentSlot.MAINHAND;
+    }
+
+    public static void registerAttributeSyncer() {
+        ServerPlayConnectionEvents.JOIN.register((network, packetSender, minecraftServer) -> {
+            PacketByteBuf packet = new PacketByteBuf(Unpooled.buffer());
+
+            // serialize each attribute file as a string to the packet
+            packet.writeInt(ATTRIBUTE_DATA_LOADER.getItemAttributes().size());
+
+            // write each value
+            ATTRIBUTE_DATA_LOADER.getItemAttributes().forEach((id, attribute) -> {
+                packet.writeString(id.toString());
+                packet.writeString(AttributeDataLoader.GSON.toJson(attribute));
+            });
+
+            // send packet with attributes to client
+            packetSender.sendPacket(ATTRIBUTE_SYNC_PACKET, packet);
+        });
     }
 }
