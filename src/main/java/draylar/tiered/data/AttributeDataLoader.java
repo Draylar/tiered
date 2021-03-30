@@ -9,6 +9,7 @@ import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.gson.EntityAttributeModifierDeserializer;
 import draylar.tiered.gson.EntityAttributeModifierSerializer;
 import draylar.tiered.gson.EquipmentSlotDeserializer;
+import draylar.tiered.gson.EquipmentSlotSerializer;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.resource.JsonDataLoader;
@@ -29,6 +30,7 @@ public class AttributeDataLoader extends JsonDataLoader {
             .disableHtmlEscaping()
             .registerTypeAdapter(EntityAttributeModifier.class, new EntityAttributeModifierDeserializer())
             .registerTypeAdapter(EntityAttributeModifier.class, new EntityAttributeModifierSerializer())
+            .registerTypeAdapter(EquipmentSlot.class, new EquipmentSlotSerializer())
             .registerTypeAdapter(EquipmentSlot.class, new EquipmentSlotDeserializer())
             .registerTypeHierarchyAdapter(Style.class, new Style.Serializer())
             .create();
