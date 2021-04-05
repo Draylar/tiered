@@ -1,29 +1,29 @@
 {
-  "generic.dig_speed": "Dig Speed",
-  "generic.crit_chance": "Crit Chance",
+  "generic.dig_speed": "Prędkość Kopania",
+  "generic.crit_chance": "Szansa Na Krytyka",
 
-  "tiered:common.label": "Common",
-  "tiered:rare.label": "Rare",
-  "tiered:epic.label": "Epic",
-  "tiered:legendary.label": "Legendary",
+  "tiered:common.label": "Pospolity",
+  "tiered:rare.label": "Rzadki",
+  "tiered:epic.label": "Epicki",
+  "tiered:legendary.label": "Legendarny",
 
-  "tiered:dented.label": "Dented",
-  "tiered:fortified.label": "Fortified",
-  "tiered:heavy.label": "Heavy",
-  "tiered:reinforced.label": "Reinforced",
-  "tiered:resilient.label": "Resilient",
-  "tiered:unchained.label": "Unchained",
+  "tiered:dented.label": "Krzywy",
+  "tiered:fortified.label": "Twarde",
+  "tiered:heavy.label": "Ciężki",
+  "tiered:reinforced.label": "Wzmocniony",
+  "tiered:resilient.label": "Wzmocnione",
+  "tiered:unchained.label": "Demoniczne",
 
-  "tiered:extended.label": "Extended",
+  "tiered:extended.label": "Długi",
 
-  "tiered:lucky.label": "Lucky",
+  "tiered:lucky.label": "Szczęśliwy",
 
-  "tiered:hasteful.label": "Hasteful",
-  "tiered:swift.label": "Swift",
+  "tiered:hasteful.label": "Pośpiech",
+  "tiered:swift.label": "Szybki",
 
-  "tiered:berserk.label": "Berserk",
-  "tiered:critical.label": "Critical",
+  "tiered:berserk.label": "Demoniczny",
+  "tiered:critical.label": "Mocny",
   "tiered:dull.label": "Tępy",
-  "tiered:keen.label": "Keen",
+  "tiered:keen.label": "Mocny",
   "tiered:sharp.label": "Ostry"
 } 
