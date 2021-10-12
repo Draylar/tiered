@@ -1,0 +1,29 @@
+{
+  "generic.dig_speed": "Prędkość Kopania",
+  "generic.crit_chance": "Szansa Na Krytyka",
+
+  "tiered:common.label": "Pospolity",
+  "tiered:rare.label": "Rzadki",
+  "tiered:epic.label": "Epicki",
+  "tiered:legendary.label": "Legendarny",
+
+  "tiered:dented.label": "Krzywy",
+  "tiered:fortified.label": "Twarde",
+  "tiered:heavy.label": "Ciężki",
+  "tiered:reinforced.label": "Wzmocniony",
+  "tiered:resilient.label": "Wzmocnione",
+  "tiered:unchained.label": "Demoniczne",
+
+  "tiered:extended.label": "Długi",
+
+  "tiered:lucky.label": "Szczęśliwy",
+
+  "tiered:hasteful.label": "Pośpiech",
+  "tiered:swift.label": "Szybki",
+
+  "tiered:berserk.label": "Demoniczny",
+  "tiered:critical.label": "Mocny",
+  "tiered:dull.label": "Tępy",
+  "tiered:keen.label": "Mocny",
+  "tiered:sharp.label": "Ostry"
+} 
