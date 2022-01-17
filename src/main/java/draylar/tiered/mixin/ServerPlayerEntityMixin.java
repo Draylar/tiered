@@ -17,34 +17,41 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayerEntity.class)
-public abstract class ServerPlayerEntityMixin extends PlayerEntity {
+public abstract class ServerPlayerEntityMixin extends PlayerEntity
+{
 
     private DefaultedList<ItemStack> mainCopy = null;
 
-    private ServerPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile) {
+    private ServerPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile)
+    {
         super(world, pos, yaw, profile);
     }
 
     @Inject(method = "tick", at = @At("HEAD"))
-    private void onTick(CallbackInfo ci) {
+    private void onTick(CallbackInfo ci)
+    {
         // if main copy is null, set it to player inventory and check each stack
-        if(mainCopy == null) {
-            mainCopy = copyDefaultedList(inventory.main);
+        if (mainCopy == null)
+        {
+            mainCopy = copyDefaultedList(getInventory().main);
             runCheck();
         }
 
         // if main copy =/= inventory, run check and set mainCopy to inventory
-        if (!inventory.main.equals(mainCopy)) {
-            mainCopy = copyDefaultedList(inventory.main);
+        if (!getInventory().main.equals(mainCopy))
+        {
+            mainCopy = copyDefaultedList(getInventory().main);
             runCheck();
         }
     }
 
     @Unique
-    private DefaultedList<ItemStack> copyDefaultedList(DefaultedList<ItemStack> list) {
+    private DefaultedList<ItemStack> copyDefaultedList(DefaultedList<ItemStack> list)
+    {
         DefaultedList<ItemStack> newList = DefaultedList.ofSize(36, ItemStack.EMPTY);
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++)
+        {
             newList.set(i, list.get(i));
         }
 
@@ -52,16 +59,20 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
     }
 
     @Unique
-    private void runCheck() {
-        inventory.main.forEach(itemStack -> {
+    private void runCheck()
+    {
+        getInventory().main.forEach(itemStack -> {
             // no tier on item
-            if(itemStack.getSubTag(Tiered.NBT_SUBTAG_KEY) == null) {
+            if (itemStack.getSubNbt(Tiered.NBT_SUBTAG_KEY) == null)
+            {
                 // attempt to get a random tier
                 Identifier potentialAttributeID = ModifierUtils.getRandomAttributeIDFor(itemStack.getItem());
 
                 // found an ID
-                if(potentialAttributeID != null) {
-                    itemStack.getOrCreateSubTag(Tiered.NBT_SUBTAG_KEY).putString(Tiered.NBT_SUBTAG_DATA_KEY, potentialAttributeID.toString());
+                if (potentialAttributeID != null)
+                {
+                    itemStack.getOrCreateSubNbt(Tiered.NBT_SUBTAG_KEY)
+                             .putString(Tiered.NBT_SUBTAG_DATA_KEY, potentialAttributeID.toString());
                 }
             }
         });
