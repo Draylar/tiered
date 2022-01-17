@@ -1,8 +1,8 @@
 package draylar.tiered;
 
 import draylar.tiered.api.CustomEntityAttributes;
-import draylar.tiered.api.TieredItemTags;
 import draylar.tiered.api.PotentialAttribute;
+import draylar.tiered.api.TieredItemTags;
 import draylar.tiered.data.AttributeDataLoader;
 import draylar.tiered.mixin.ServerResourceManagerMixin;
 import io.netty.buffer.Unpooled;
@@ -22,7 +22,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.UUID;
 
-public class Tiered implements ModInitializer {
+public class Tiered implements ModInitializer
+{
 
     /**
      * Attribute Data Loader instance which handles loading attribute .json files from "data/modid/item_attributes".
@@ -30,7 +31,7 @@ public class Tiered implements ModInitializer {
      */
     public static final AttributeDataLoader ATTRIBUTE_DATA_LOADER = new AttributeDataLoader();
 
-    public static final UUID[] MODIFIERS = new UUID[] {
+    public static final UUID[] MODIFIERS = new UUID[]{
             UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"),
             UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"),
             UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"),
@@ -46,12 +47,14 @@ public class Tiered implements ModInitializer {
     public static final String NBT_SUBTAG_DATA_KEY = "Tier";
 
     @Override
-    public void onInitialize() {
+    public void onInitialize()
+    {
         TieredItemTags.init();
         CustomEntityAttributes.init();
         registerAttributeSyncer();
 
-        if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT)
+        {
 //            setupModifierLabel();
         }
     }
@@ -59,10 +62,11 @@ public class Tiered implements ModInitializer {
     /**
      * Returns an {@link Identifier} namespaced with this mod's modid ("tiered").
      *
-     * @param path  path of identifier (eg. apple in "minecraft:apple")
-     * @return  Identifier created with a namespace of this mod's modid ("tiered") and provided path
+     * @param path path of identifier (eg. apple in "minecraft:apple")
+     * @return Identifier created with a namespace of this mod's modid ("tiered") and provided path
      */
-    public static Identifier id(String path) {
+    public static Identifier id(String path)
+    {
         return new Identifier("tiered", path);
     }
 
@@ -70,25 +74,32 @@ public class Tiered implements ModInitializer {
      * Creates an {@link ItemTooltipCallback} listener that adds the modifier name at the top of an Item tooltip.
      * <p>A tool name is only displayed if the item has a modifier.
      */
-    private void setupModifierLabel() {
+    private void setupModifierLabel()
+    {
         ItemTooltipCallback.EVENT.register((stack, tooltipContext, lines) -> {
             // has tier
-            if(stack.getSubTag(NBT_SUBTAG_KEY) != null) {
+            if (stack.getSubNbt(NBT_SUBTAG_KEY) != null)
+            {
                 // get tier
-                Identifier tier = new Identifier(stack.getOrCreateSubTag(NBT_SUBTAG_KEY).getString(Tiered.NBT_SUBTAG_DATA_KEY));
+                Identifier tier = new Identifier(
+                        stack.getOrCreateSubNbt(NBT_SUBTAG_KEY).getString(Tiered.NBT_SUBTAG_DATA_KEY));
 
                 // attempt to display attribute if it is valid
                 PotentialAttribute potentialAttribute = Tiered.ATTRIBUTE_DATA_LOADER.getItemAttributes().get(tier);
 
-                if(potentialAttribute != null) {
-                    lines.add(1, new TranslatableText(potentialAttribute.getID() + ".label").setStyle(potentialAttribute.getStyle()));
+                if (potentialAttribute != null)
+                {
+                    lines.add(1, new TranslatableText(potentialAttribute.getID() + ".label").setStyle(
+                            potentialAttribute.getStyle()));
                 }
             }
         });
     }
 
-    public static boolean isPreferredEquipmentSlot(ItemStack stack, EquipmentSlot slot) {
-        if(stack.getItem() instanceof ArmorItem) {
+    public static boolean isPreferredEquipmentSlot(ItemStack stack, EquipmentSlot slot)
+    {
+        if (stack.getItem() instanceof ArmorItem)
+        {
             ArmorItem item = (ArmorItem) stack.getItem();
             return item.getSlotType().equals(slot);
         }
@@ -96,7 +107,8 @@ public class Tiered implements ModInitializer {
         return slot == EquipmentSlot.MAINHAND;
     }
 
-    public static void registerAttributeSyncer() {
+    public static void registerAttributeSyncer()
+    {
         ServerPlayConnectionEvents.JOIN.register((network, packetSender, minecraftServer) -> {
             PacketByteBuf packet = new PacketByteBuf(Unpooled.buffer());
 
