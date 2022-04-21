@@ -1,0 +1,27 @@
+{
+    "id": "tiered:longshot",
+    "verifiers": [
+        {
+            "id": "minecraft:bow"
+        },
+        {
+            "id": "minecraft:crossbow"
+        }
+    ],
+    "style": {
+        "color": "blue"
+    },
+    "attributes": [
+        {
+            "type": "tiered:generic.range_attack_damage",
+            "modifier": {
+                "name": "tiered:longshot",
+                "operation": "ADDITION",
+                "amount": 4
+            },
+            "optional_equipment_slots": [
+                "MAINHAND"
+            ]
+        }
+    ]
+}

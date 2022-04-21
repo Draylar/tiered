@@ -1,0 +1,74 @@
+{
+    "definitions": [
+        {
+            "index": 0,
+            "startColor": "#BABABA",
+            "endColor": "#565656",
+            "selectors": [
+                "&Tiered={Tier:\"tiered:common\"}"
+            ]
+        },
+        {
+            "index": 1,
+            "startColor": "#3FC43A",
+            "endColor": "#133F2A",
+            "selectors": [
+                "&Tiered={Tier:\"tiered:uncommon\"}"
+            ]
+        },
+        {
+            "index": 2,
+            "startColor": "#163F54",
+            "endColor": "#163F54",
+            "selectors": [
+                "&Tiered={Tier:\"tiered:rare\"}"
+            ]
+        },
+        {
+            "index": 3,
+            "startColor": "#912307",
+            "endColor": "#818385",
+            "selectors": [
+                "&Tiered={Tier:\"tiered:epic\"}"
+            ]
+        },
+        {
+            "index": 4,
+            "startColor": "#008FCC",
+            "endColor": "#044B8A",
+            "selectors": [
+                "&Tiered={Tier:\"tiered:legendary\"}"
+            ]
+        },
+        {
+            "index": 5,
+            "startColor": "#5C4C2D",
+            "endColor": "#5C4C2D",
+            "selectors": []
+        },
+        {
+            "index": 6,
+            "startColor": "#705A87",
+            "endColor": "#393556",
+            "selectors": []
+        },
+        {
+            "index": 7,
+            "startColor": "#7D8A91",
+            "endColor": "#7D8A91",
+            "selectors": []
+        },
+        {
+            "index": 8,
+            "startColor": "#A591B6",
+            "endColor": "#A591B6",
+            "selectors": []
+        },
+        {
+            "index": 9,
+            "startColor": "#FFFADB",
+            "endColor": "#FFDFAD",
+            "selectors": []
+        }
+    ]
+}

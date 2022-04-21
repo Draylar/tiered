@@ -1,0 +1,27 @@
+{
+    "id": "tiered:hunting",
+    "verifiers": [
+        {
+            "id": "minecraft:bow"
+        },
+        {
+            "id": "minecraft:crossbow"
+        }
+    ],
+    "style": {
+        "color": "dark_green"
+    },
+    "attributes": [
+        {
+            "type": "tiered:generic.range_attack_damage",
+            "modifier": {
+                "name": "tiered:hunting",
+                "operation": "ADDITION",
+                "amount": 1
+            },
+            "optional_equipment_slots": [
+                "MAINHAND"
+            ]
+        }
+    ]
+}

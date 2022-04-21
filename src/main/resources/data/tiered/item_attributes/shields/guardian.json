@@ -1,0 +1,49 @@
+{
+  "id": "tiered:guardian",
+  "verifiers": [
+    {
+      "tag": "fabric:shields"
+    }
+  ],
+  "style": {
+    "color": "gold"
+  },
+  "attributes": [
+    {
+      "type": "generic.armor",
+      "modifier": {
+        "name": "tiered:guardian",
+        "operation": "ADDITION",
+        "amount": 2
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "OFFHAND"
+      ]
+    },
+    {
+      "type": "generic.armor_toughness",
+      "modifier": {
+        "name": "tiered:guardian",
+        "operation": "ADDITION",
+        "amount": 1
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "OFFHAND"
+      ]
+    },
+    {
+      "type": "tiered:generic.durable",
+      "modifier": {
+        "name": "tiered:guardian",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.6
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "OFFHAND"
+      ]
+    }
+  ]
+}

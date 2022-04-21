@@ -1,8 +1,11 @@
 {
   "generic.dig_speed": "Dig Speed",
   "generic.crit_chance": "Crit Chance",
+  "generic.durable": "Durability",
+  "generic.range_attack_damage": "Range Attack Damage",
 
   "tiered:common.label": "Common",
+  "tiered:uncommon.label": "Uncommon",
   "tiered:rare.label": "Rare",
   "tiered:epic.label": "Epic",
   "tiered:legendary.label": "Legendary",
@@ -25,5 +28,16 @@
   "tiered:critical.label": "Critical",
   "tiered:dull.label": "Dull",
   "tiered:keen.label": "Keen",
-  "tiered:sharp.label": "Sharp"
+  "tiered:sharp.label": "Sharp",
+
+  "tiered:corrodet.label": "Corrodet",
+  "tiered:dawnguard.label": "Dawnguard",
+  "tiered:guardian.label": "Guardian",
+  "tiered:light.label": "Light",
+  "tiered:mercy.label": "Mercy",
+
+  "tiered:battered.label": "Battered",
+  "tiered:hunting.label": "Hunting",
+  "tiered:longshot.label": "Longshot",
+  "tiered:revenant.label": "Revenant"
 }

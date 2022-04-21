@@ -25,11 +25,10 @@ public class EntityAttributeModifierDeserializer implements JsonDeserializer<Ent
     private JsonElement getJsonElement(JsonObject jsonObject, String jsonNameKey, String s) {
         JsonElement name;
 
-        if (jsonObject.has(jsonNameKey)) {
+        if (jsonObject.has(jsonNameKey))
             name = jsonObject.get(jsonNameKey);
-        } else {
+        else
             throw new JsonParseException(s);
-        }
 
         return name;
     }

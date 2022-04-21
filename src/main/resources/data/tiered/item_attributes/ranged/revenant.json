@@ -1,0 +1,27 @@
+{
+    "id": "tiered:revenant",
+    "verifiers": [
+        {
+            "id": "minecraft:bow"
+        },
+        {
+            "id": "minecraft:crossbow"
+        }
+    ],
+    "style": {
+        "color": "dark_purple"
+    },
+    "attributes": [
+        {
+            "type": "tiered:generic.range_attack_damage",
+            "modifier": {
+                "name": "tiered:revenant",
+                "operation": "ADDITION",
+                "amount": 6
+            },
+            "optional_equipment_slots": [
+                "MAINHAND"
+            ]
+        }
+    ]
+}

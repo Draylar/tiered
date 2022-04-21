@@ -9,14 +9,16 @@ public class PotentialAttribute {
 
     private final String id;
     private final List<ItemVerifier> verifiers;
+    private final int weight;
     private final Style style;
     private final List<AttributeTemplate> attributes;
 
-    public PotentialAttribute(String id, List<ItemVerifier> verifiers, Style style, List<AttributeTemplate> attributes) {
+    public PotentialAttribute(String id, List<ItemVerifier> verifiers, int weight, Style style, List<AttributeTemplate> attributes) {
         this.id = id;
         this.verifiers = verifiers;
         this.style = style;
         this.attributes = attributes;
+        this.weight = weight;
     }
 
     public String getID() {
@@ -27,9 +29,13 @@ public class PotentialAttribute {
         return verifiers;
     }
 
+    public int getWeight() {
+        return weight;
+    }
+
     public boolean isValid(Identifier id) {
-        for(ItemVerifier verifier : verifiers) {
-            if(verifier.isValid(id)) {
+        for (ItemVerifier verifier : verifiers) {
+            if (verifier.isValid(id)) {
                 return true;
             }
         }
@@ -44,4 +50,5 @@ public class PotentialAttribute {
     public List<AttributeTemplate> getAttributes() {
         return attributes;
     }
+
 }

@@ -1,0 +1,27 @@
+{
+    "id": "tiered:battered",
+    "verifiers": [
+        {
+            "id": "minecraft:bow"
+        },
+        {
+            "id": "minecraft:crossbow"
+        }
+    ],
+    "style": {
+        "color": "gray"
+    },
+    "attributes": [
+        {
+            "type": "tiered:generic.range_attack_damage",
+            "modifier": {
+                "name": "tiered:battered",
+                "operation": "ADDITION",
+                "amount": -2
+            },
+            "optional_equipment_slots": [
+                "MAINHAND"
+            ]
+        }
+    ]
+}

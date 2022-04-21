@@ -1,16 +1,19 @@
 {
   "required": true,
   "package": "draylar.tiered.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ItemStackMixin",
     "LivingEntityMixin",
     "PlayerEntityMixin",
     "ServerPlayerEntityMixin",
-    "ServerResourceManagerMixin"
+    "ItemMixin",
+    "ArrowEntityMixin",
+    "TridentEntityMixin",
+    "SpectralArrowEntityMixin"
   ],
   "client": [
-    "ItemStackClientMixin"
+    "client.ItemStackClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1

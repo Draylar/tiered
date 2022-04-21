@@ -92,6 +92,21 @@
         "CHEST",
         "HEAD"
       ]
+    },
+    {
+      "type": "tiered:generic.durable",
+      "modifier": {
+        "name": "tiered:legendary",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.3
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "FEET",
+        "LEGS",
+        "CHEST",
+        "HEAD"
+      ]
     }
   ]
 }

@@ -5,13 +5,14 @@
   "name": "Tiered",
   "description": "Adds tiers to tools.",
   "authors": [
-    "Draylar"
+    "Draylar",
+    "Globox_Z"
   ],
   "contact": {
     "issues": "https://github.com/Draylar/tiered/issues",
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/tiered"
   },
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/tiered/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -26,8 +27,9 @@
     "tiered.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.8.2+build.194",
+    "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": ">=1.16"
+    "minecraft": "1.18.x",
+    "java": ">=17"
   }
 }

@@ -1,0 +1,67 @@
+{
+    "id": "tiered:uncommon",
+    "verifiers": [
+        {
+            "tag": "fabric:helmets"
+        },
+        {
+            "tag": "fabric:chestplates"
+        },
+        {
+            "tag": "fabric:leggings"
+        },
+        {
+            "tag": "fabric:boots"
+        },
+        {
+            "tag": "fabric:swords"
+        },
+        {
+            "tag": "fabric:shovels"
+        },
+        {
+            "tag": "fabric:pickaxes"
+        },
+        {
+            "tag": "fabric:hoes"
+        },
+        {
+            "tag": "fabric:axes"
+        }
+    ],
+    "style": {
+        "color": "dark_green"
+    },
+    "attributes": [
+        {
+            "type": "generic.max_health",
+            "modifier": {
+                "name": "tiered:uncommon",
+                "operation": "ADDITION",
+                "amount": 2
+            },
+            "optional_equipment_slots": [
+                "MAINHAND",
+                "FEET",
+                "LEGS",
+                "CHEST",
+                "HEAD"
+            ]
+        },
+        {
+            "type": "tiered:generic.durable",
+            "modifier": {
+                "name": "tiered:uncommon",
+                "operation": "MULTIPLY_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "MAINHAND",
+                "FEET",
+                "LEGS",
+                "CHEST",
+                "HEAD"
+            ]
+        }
+    ]
+}

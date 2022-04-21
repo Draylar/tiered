@@ -66,9 +66,24 @@
     {
       "type": "generic.armor_toughness",
       "modifier": {
-        "name": "tiered:legendary",
+        "name": "tiered:epic",
         "operation": "ADDITION",
         "amount": 1
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "FEET",
+        "LEGS",
+        "CHEST",
+        "HEAD"
+      ]
+    },
+    {
+      "type": "tiered:generic.durable",
+      "modifier": {
+        "name": "tiered:epic",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": 0.2
       },
       "optional_equipment_slots": [
         "MAINHAND",

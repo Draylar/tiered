@@ -22,62 +22,39 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         super(type, world);
     }
 
-    @Inject(
-            method = "createPlayerAttributes",
-            at = @At("RETURN")
-    )
-    private static void initAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> ci) {
-        ci.getReturnValue().add(CustomEntityAttributes.CRIT_CHANCE);
-        ci.getReturnValue().add(CustomEntityAttributes.DIG_SPEED);
+    @Inject(method = "createPlayerAttributes", at = @At("RETURN"))
+    private static void createPlayerAttributesMixin(CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
+        info.getReturnValue().add(CustomEntityAttributes.CRIT_CHANCE);
+        info.getReturnValue().add(CustomEntityAttributes.DIG_SPEED);
+        info.getReturnValue().add(CustomEntityAttributes.DURABLE);
+        info.getReturnValue().add(CustomEntityAttributes.RANGE_ATTACK_DAMAGE);
     }
 
-    @ModifyVariable(
-            method = "getBlockBreakingSpeed",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/entity/effect/StatusEffectUtil;hasHaste(Lnet/minecraft/entity/LivingEntity;)Z"
-            ),
-            index = 2
-    )
-    private float getBlockBreakingSpeed(float f) {
+    @ModifyVariable(method = "getBlockBreakingSpeed", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/effect/StatusEffectUtil;hasHaste(Lnet/minecraft/entity/LivingEntity;)Z"), index = 2)
+    private float getBlockBreakingSpeedMixin(float f) {
         EntityAttributeInstance instance = this.getAttributeInstance(CustomEntityAttributes.DIG_SPEED);
 
-        if(instance != null) {
+        if (instance != null) {
             for (EntityAttributeModifier modifier : instance.getModifiers()) {
                 float amount = (float) modifier.getValue();
 
-                if (modifier.getOperation() == EntityAttributeModifier.Operation.ADDITION) {
+                if (modifier.getOperation() == EntityAttributeModifier.Operation.ADDITION)
                     f += amount;
-                } else {
+                else
                     f *= (amount + 1);
-                }
             }
         }
 
         return f;
     }
 
-    @ModifyVariable(
-            method = "attack",
-            at = @At(
-                    value = "JUMP",
-                    ordinal = 2
-            ),
-            slice = @Slice(
-                    from = @At(
-                            value = "INVOKE",
-                            target = "Lnet/minecraft/entity/player/PlayerEntity;isSprinting()Z",
-                            ordinal = 1
-                    )
-            ),
-            index = 8
-    )
-    private boolean attack(boolean bl3) {
+    @ModifyVariable(method = "attack", at = @At(value = "JUMP", ordinal = 2), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;isSprinting()Z", ordinal = 1)), index = 8)
+    private boolean attackMixin(boolean bl3) {
         float customChance = 0;
 
         EntityAttributeInstance instance = this.getAttributeInstance(CustomEntityAttributes.CRIT_CHANCE);
 
-        if(instance != null) {
+        if (instance != null) {
             for (EntityAttributeModifier modifier : instance.getModifiers()) {
                 float amount = (float) modifier.getValue();
                 customChance += amount;

@@ -1,0 +1,25 @@
+{
+  "id": "tiered:corrodet",
+  "verifiers": [
+    {
+      "tag": "fabric:shields"
+    }
+  ],
+  "style": {
+    "color": "gray"
+  },
+  "attributes": [
+    {
+      "type": "tiered:generic.durable",
+      "modifier": {
+        "name": "tiered:corrodet",
+        "operation": "MULTIPLY_TOTAL",
+        "amount": -0.2
+      },
+      "optional_equipment_slots": [
+        "MAINHAND",
+        "OFFHAND"
+      ]
+    }
+  ]
+}

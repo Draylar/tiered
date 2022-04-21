@@ -1,0 +1,24 @@
+{
+    "id": "tiered:unlucky",
+    "verifiers": [
+        {
+            "id": "minecraft:fishing_rod"
+        }
+    ],
+    "style": {
+        "color": "aqua"
+    },
+    "attributes": [
+        {
+            "type": "generic.luck",
+            "modifier": {
+                "name": "tiered:unlucky",
+                "operation": "MULTIPLY_TOTAL",
+                "amount": -0.1
+            },
+            "optional_equipment_slots": [
+                "MAINHAND"
+            ]
+        }
+    ]
+}

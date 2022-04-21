@@ -10,6 +10,7 @@ import draylar.tiered.gson.EntityAttributeModifierDeserializer;
 import draylar.tiered.gson.EntityAttributeModifierSerializer;
 import draylar.tiered.gson.EquipmentSlotDeserializer;
 import draylar.tiered.gson.EquipmentSlotSerializer;
+import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.resource.JsonDataLoader;
@@ -22,18 +23,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class AttributeDataLoader extends JsonDataLoader {
-
-    public static final Gson GSON = new GsonBuilder()
-            .setPrettyPrinting()
-            .disableHtmlEscaping()
-            .registerTypeAdapter(EntityAttributeModifier.class, new EntityAttributeModifierDeserializer())
-            .registerTypeAdapter(EntityAttributeModifier.class, new EntityAttributeModifierSerializer())
-            .registerTypeAdapter(EquipmentSlot.class, new EquipmentSlotSerializer())
-            .registerTypeAdapter(EquipmentSlot.class, new EquipmentSlotDeserializer())
-            .registerTypeHierarchyAdapter(Style.class, new Style.Serializer())
-            .create();
+public class AttributeDataLoader extends JsonDataLoader implements SimpleSynchronousResourceReloadListener {
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().registerTypeAdapter(EntityAttributeModifier.class, new EntityAttributeModifierDeserializer())
+            .registerTypeAdapter(EntityAttributeModifier.class, new EntityAttributeModifierSerializer()).registerTypeAdapter(EquipmentSlot.class, new EquipmentSlotSerializer())
+            .registerTypeAdapter(EquipmentSlot.class, new EquipmentSlotDeserializer()).registerTypeHierarchyAdapter(Style.class, new Style.Serializer()).create();
 
     private static final String PARSING_ERROR_MESSAGE = "Parsing error loading recipe {}";
     private static final String LOADED_RECIPES_MESSAGE = "Loaded {} recipes";
@@ -64,12 +60,17 @@ public class AttributeDataLoader extends JsonDataLoader {
         LOGGER.info(LOADED_RECIPES_MESSAGE, readItemAttributes.size());
     }
 
-    /**
-     * Returns a list of potential item attributes ({@link PotentialAttribute}) read from "data/modid/item_attributes".
-     *
-     * @return  list of potential read item attributes
-     */
     public Map<Identifier, PotentialAttribute> getItemAttributes() {
         return itemAttributes;
     }
+
+    @Override
+    public Identifier getFabricId() {
+        return new Identifier("tiered", "item_attributes");
+    }
+
+    @Override
+    public void reload(ResourceManager resourceManager) {
+    }
+
 }
