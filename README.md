@@ -1,4 +1,4 @@
-# Tiered [heavy beta]
+# Tiered
 
 Tiered is a Fabric mod inspired by [Quality Tools](https://www.curseforge.com/minecraft/mc-mods/quality-tools). Every tool you make will have a special modifier, as seen below:
 
@@ -40,7 +40,7 @@ Tiered is entirely data-driven, which means you can add, modify, and remove modi
 }
 ```
 
-Tiered currently provides 2 custom attributes: Dig Speed and Crit chance. Dig Speed increases the speed of your block breaking (think: haste), and Crit Chance offers an additional random chance to crit when using a tool.
+Tiered currently provides 3 custom attributes: Dig Speed, Crit chance and Durability. Dig Speed increases the speed of your block breaking (think: haste), Crit Chance offers an additional random chance to crit when using a tool and Durability increases, who would have thought it, the durability of an item.
 
 ### Verifiers
 
@@ -56,7 +56,7 @@ and a tag can be specified with:
 "tag": "fabric:helmets"
 ```
 
-Tiered provides 4 armor tags (`fabric:helmets`, `fabric:chestplates`, `fabric:leggings`, and `fabric:boots` for your convenience).
+Tiered provides 4 armor tags (`fabric:helmets`, `fabric:chestplates`, `fabric:leggings`, `fabric:boots`) and 6 tool tags (`fabric:axes`, `faric:hoes`, `fabric:pickaxes`, `fabric:shields`, `fabric:shovels` and `fabric:swords`).
 
 
 ### License
