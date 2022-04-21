@@ -1,90 +1,98 @@
 plugins {
-    id 'fabric-loom' version '0.5-SNAPSHOT'
-    id 'maven-publish'
+	id 'fabric-loom' version '0.11-SNAPSHOT'
+	id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version + "-" + project.minecraft_version
+version = project.mod_version
 group = project.maven_group
 
-minecraft {
-}
-
 repositories {
-    maven { url 'https://jitpack.io' }
-    maven { url 'https://jitpack.io' }
-    maven { url 'https://jitpack.io' }
+	maven { url 'https://jitpack.io' }
+	maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.terraformersmc.com/" }
+	maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
+	maven { url "https://cursemaven.com" }
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
-    modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	// To change the versions see the gradle.properties file
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"
+	// Fabric API. This is technically optional, but you probably want it anyway.
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modCompile ("com.github.Draylar:reach-entity-attributes:1.0.2") {
-        exclude group: "net.fabricmc.fabric-api"
+	// ModMenu
+    modCompileOnly modRuntimeOnly("com.terraformersmc:modmenu:${project.mod_menu_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
     }
 
-    include ("com.github.Draylar:reach-entity-attributes:1.0.2") {
-        exclude group: "net.fabricmc.fabric-api"
-    }
+	// Reach Entity Attributes Draylar
+	// modCompileOnly ("com.github.Draylar:reach-entity-attributes:1.0.2") {
+    //     exclude group: "net.fabricmc.fabric-api"
+    // }
+
+	// Legendary Tooltips
+	// modRuntimeOnly 'com.electronwill.night-config:core:3.6.3'
+	// modRuntimeOnly 'com.electronwill.night-config:toml:3.6.3'
+	// modCompileOnly "com.github.TheElectronWill:night-config:v3.6.5"
+	// //implementation(include('com.electronwill.night-config:core:3.6.3'))
+	// //implementation(include('com.electronwill.night-config:toml:3.6.3'))
+
+	// modRuntimeOnly "curse.maven:forge-config-api-port-fabric-547434:3671141"
+	// modRuntimeOnly "curse.maven:iceberg-fabric-539382:3675784"
+	// modRuntimeOnly "curse.maven:legendary-tooltips-fabric-542478:3675787"
+
+	// Reach Entity Attributes 
+	modImplementation include ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"), {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 }
 
 processResources {
-    inputs.property "version", project.version
+	inputs.property "version", project.version
 
-    from(sourceSets.main.resources.srcDirs) {
-        include "fabric.mod.json"
-        expand "version": project.version
-    }
-
-    from(sourceSets.main.resources.srcDirs) {
-        exclude "fabric.mod.json"
-    }
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
 }
 
-// ensure that the encoding is set to UTF-8, no matter what the system default is
-// this fixes some edge cases with special characters not displaying correctly
-// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+tasks.withType(JavaCompile).configureEach {
+	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+	it.options.release = 17
 }
 
-// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-// if it is present.
-// If you remove this task, sources will not be generated.
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = "sources"
-    from sourceSets.main.allSource
+java {
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+	// if it is present.
+	// If you remove this line, sources will not be generated.
+	withSourcesJar()
 }
 
 jar {
-    from "LICENSE"
+	from("LICENSE") {
+		rename { "${it}_${project.archivesBaseName}"}
+	}
 }
 
 // configure the maven publication
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            // add all the jars that should be included when publishing to maven
-            artifact(remapJar) {
-                builtBy remapJar
-            }
-            artifact(sourcesJar) {
-                builtBy remapSourcesJar
-            }
-        }
-    }
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
 
-    // select the repositories you want to publish to
-    repositories {
-        // uncomment to publish to the local maven
-        // mavenLocal()
-    }
+	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+	repositories {
+		// Add repositories to publish to here.
+		// Notice: This block does NOT have the same function as the block in the top level.
+		// The repositories here will be used for publishing your artifact, not for
+		// retrieving dependencies.
+	}
 }
