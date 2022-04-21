@@ -5,6 +5,7 @@
       "tag": "fabric:shields"
     }
   ],
+  "weight": 3,
   "style": {
     "color": "gold"
   },

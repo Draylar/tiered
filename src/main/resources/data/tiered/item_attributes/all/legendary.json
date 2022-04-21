@@ -29,6 +29,7 @@
       "tag": "fabric:axes"
     }
   ],
+  "weight": 3,
   "style": {
     "color": "gold"
   },

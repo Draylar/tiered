@@ -29,6 +29,7 @@
       "tag": "fabric:axes"
     }
   ],
+  "weight": 50,
   "style": {
     "color": "gray"
   },

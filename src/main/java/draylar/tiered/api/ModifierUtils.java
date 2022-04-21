@@ -1,6 +1,7 @@
 package draylar.tiered.api;
 
 import draylar.tiered.Tiered;
+import draylar.tiered.util.SortList;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -24,17 +25,32 @@ public class ModifierUtils {
     @Nullable
     public static Identifier getRandomAttributeIDFor(Item item) {
         List<Identifier> potentialAttributes = new ArrayList<>();
+        List<Integer> attributeWeights = new ArrayList<>();
+        // collect all valid attributes for the given item and their weights
 
-        // collect all valid attributes for the given item
         Tiered.ATTRIBUTE_DATA_LOADER.getItemAttributes().forEach((id, attribute) -> {
-            if (attribute.isValid(Registry.ITEM.getId(item)))
+            if (attribute.isValid(Registry.ITEM.getId(item)) && attribute.getWeight() > 0) {
                 potentialAttributes.add(new Identifier(attribute.getID()));
+                attributeWeights.add(attribute.getWeight());
+            }
         });
 
         // return a random attribute if there are any, or null if there are none
-        if (potentialAttributes.size() > 0)
+        if (potentialAttributes.size() > 0) {
+            int totalWeight = 0;
+            for (Integer weight : attributeWeights)
+                totalWeight += weight.intValue();
+            int randomChoice = new Random().nextInt(totalWeight);
+            SortList.concurrentSort(attributeWeights, attributeWeights, potentialAttributes);
+
+            for (int i = 0; i < attributeWeights.size(); i++) {
+                if (randomChoice < attributeWeights.get(i))
+                    return potentialAttributes.get(i);
+                randomChoice -= attributeWeights.get(i);
+            }
+            // If random choice didn't work
             return potentialAttributes.get(new Random().nextInt(potentialAttributes.size()));
-        else
+        } else
             return null;
     }
 

@@ -21,6 +21,7 @@ Tiered is entirely data-driven, which means you can add, modify, and remove modi
       "tag": "fabric:axes"
     }
   ],
+  "weight": 10,
   "style": {
     "color": "GREEN"
   },
@@ -57,6 +58,10 @@ and a tag can be specified with:
 ```
 
 Tiered provides 4 armor tags (`fabric:helmets`, `fabric:chestplates`, `fabric:leggings`, `fabric:boots`) and 6 tool tags (`fabric:axes`, `faric:hoes`, `fabric:pickaxes`, `fabric:shields`, `fabric:shovels` and `fabric:swords`).
+
+### Weight
+
+The weight determines the commonness of the tier. Higher weights increase the chance of being applied on the item and vice versa.
 
 
 ### License

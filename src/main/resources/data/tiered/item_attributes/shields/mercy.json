@@ -5,6 +5,7 @@
       "tag": "fabric:shields"
     }
   ],
+  "weight": 9,
   "style": {
     "color": "dark_purple"
   },

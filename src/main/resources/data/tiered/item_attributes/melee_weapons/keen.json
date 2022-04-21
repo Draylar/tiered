@@ -8,6 +8,7 @@
       "tag": "fabric:axes"
     }
   ],
+  "weight": 10,
   "style": {
     "color": "red"
   },

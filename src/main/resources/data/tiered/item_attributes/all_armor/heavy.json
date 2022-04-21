@@ -14,6 +14,7 @@
       "tag": "fabric:boots"
     }
   ],
+  "weight": 15,
   "style": {
     "color": "dark_gray"
   },

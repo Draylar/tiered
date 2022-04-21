@@ -5,6 +5,7 @@
             "id": "minecraft:fishing_rod"
         }
     ],
+    "weight": 50,
     "style": {
         "color": "aqua"
     },

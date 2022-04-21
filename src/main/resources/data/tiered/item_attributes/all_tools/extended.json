@@ -17,6 +17,7 @@
       "tag": "fabric:hoes"
     }
   ],
+  "weight": 10,
   "style": {
     "color": "dark_purple"
   },

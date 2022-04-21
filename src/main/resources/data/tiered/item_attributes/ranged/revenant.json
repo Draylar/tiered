@@ -8,6 +8,7 @@
             "id": "minecraft:crossbow"
         }
     ],
+    "weight": 8,
     "style": {
         "color": "dark_purple"
     },
