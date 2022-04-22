@@ -1,5 +1,6 @@
 package draylar.tiered.mixin;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,18 +33,40 @@ public class ItemMixin {
             if (potentialAttributeID != null) {
                 stack.getOrCreateSubNbt(Tiered.NBT_SUBTAG_KEY).putString(Tiered.NBT_SUBTAG_DATA_KEY, potentialAttributeID.toString());
 
+                HashMap<String, Object> nbtMap = Tiered.ATTRIBUTE_DATA_LOADER.getItemAttributes().get(new Identifier(potentialAttributeID.toString())).getNbtValues();
+
                 // add durability nbt
                 List<AttributeTemplate> attributeList = Tiered.ATTRIBUTE_DATA_LOADER.getItemAttributes().get(new Identifier(potentialAttributeID.toString())).getAttributes();
                 for (int i = 0; i < attributeList.size(); i++)
                     if (attributeList.get(i).getAttributeTypeID().equals("tiered:generic.durable")) {
-                        NbtCompound nbtCompound = stack.getNbt();
-                        if (attributeList.get(i).getEntityAttributeModifier().getOperation().getId() == 0)
-                            nbtCompound.putInt(attributeList.get(i).getAttributeTypeID(), (int) attributeList.get(i).getEntityAttributeModifier().getValue());
-                        else
-                            nbtCompound.putFloat(attributeList.get(i).getAttributeTypeID(), (float) attributeList.get(i).getEntityAttributeModifier().getValue());
-                        stack.setNbt(nbtCompound);
+                        if (nbtMap == null)
+                            nbtMap = new HashMap<String, Object>();
+                        nbtMap.put("durable", attributeList.get(i).getEntityAttributeModifier().getValue());
                         break;
                     }
+                // add nbtMap
+                if (nbtMap != null) {
+                    NbtCompound nbtCompound = stack.getNbt();
+                    for (HashMap.Entry<String, Object> entry : nbtMap.entrySet()) {
+                        String key = entry.getKey();
+                        Object value = entry.getValue();
+
+                        // json list will get read as ArrayList class
+                        // json map will get read as linkedtreemap
+                        // json integer is read by gson -> always double
+                        if (value instanceof String)
+                            nbtCompound.putString(key, (String) value);
+                        else if (value instanceof Boolean)
+                            nbtCompound.putBoolean(key, (boolean) value);
+                        else if (value instanceof Double) {
+                            if ((double) value % 1.0 < 0.0001D)
+                                nbtCompound.putInt(key, (int) Math.round((double) value));
+                            else
+                                nbtCompound.putDouble(key, (double) value);
+                        }
+                    }
+                    stack.setNbt(nbtCompound);
+                }
             }
         }
     }

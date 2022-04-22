@@ -63,6 +63,18 @@ Tiered provides 4 armor tags (`fabric:helmets`, `fabric:chestplates`, `fabric:le
 
 The weight determines the commonness of the tier. Higher weights increase the chance of being applied on the item and vice versa.
 
+### Nbt
+
+Custom nbt can get added via nbtValues, an example can be found below. It supports only string, boolean, integer and double values.\ 
+Caution! Once added nbt keys won't get removed when once applied, just the values can get updated!
+
+```json
+"nbtValues": {
+  "Damage": 100,
+  "key": "value"
+}
+```
+
 
 ### License
 Tiered is licensed under MIT. You are free to use the code inside this repo as you want.
