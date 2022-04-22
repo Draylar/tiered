@@ -52,6 +52,9 @@ dependencies {
 	modImplementation include ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"), {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	modImplementation include ("com.github.DaFuqs:AdditionalEntityAttributes:d0cd35d"), {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 }
 
 processResources {
