@@ -4,7 +4,6 @@ import com.google.common.collect.Multimap;
 import com.google.gson.annotations.SerializedName;
 import draylar.tiered.Tiered;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.ClampedEntityAttribute;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.util.Identifier;
