@@ -26,8 +26,8 @@
         },
         {
             "index": 3,
-            "startColor": "#912307",
-            "endColor": "#818385",
+            "startColor": "#380F54",
+            "endColor": "#380F54",
             "selectors": [
                 "&Tiered={Tier:\"tiered:epic\"}"
             ]
