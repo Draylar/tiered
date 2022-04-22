@@ -27,6 +27,7 @@ import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -55,9 +56,9 @@ public class Tiered implements ModInitializer {
         CustomEntityAttributes.init();
         registerAttributeSyncer();
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(Tiered.ATTRIBUTE_DATA_LOADER);
-        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-            // setupModifierLabel();
-        }
+        // if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+        // // setupModifierLabel();
+        // }
         ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, serverResourceManager, success) -> {
             if (success) {
                 for (int i = 0; i < server.getPlayerManager().getPlayerList().size(); i++)
@@ -131,6 +132,8 @@ public class Tiered implements ModInitializer {
         });
     }
 
+    // Todo: Update all nbt tags here!
+
     public static void updateItemStackNbt(PlayerInventory playerInventory) {
         for (int u = 0; u < playerInventory.size(); u++) {
             ItemStack itemStack = playerInventory.getStack(u);
@@ -140,20 +143,44 @@ public class Tiered implements ModInitializer {
 
                 // found an ID
                 if (potentialAttributeID != null) {
+
+                    HashMap<String, Object> nbtMap = Tiered.ATTRIBUTE_DATA_LOADER.getItemAttributes().get(new Identifier(potentialAttributeID.toString())).getNbtValues();
                     // update durability nbt
+
                     List<AttributeTemplate> attributeList = Tiered.ATTRIBUTE_DATA_LOADER.getItemAttributes().get(new Identifier(potentialAttributeID.toString())).getAttributes();
-                    for (int k = 0; k < attributeList.size(); k++)
-                        if (attributeList.get(k).getAttributeTypeID().equals("tiered:generic.durable")) {
-                            NbtCompound nbtCompound = itemStack.getNbt();
-                            if (nbtCompound.contains("tiered:generic.durable"))
-                                nbtCompound.remove("tiered:generic.durable");
-                            if (attributeList.get(k).getEntityAttributeModifier().getOperation().getId() == 0)
-                                nbtCompound.putInt(attributeList.get(k).getAttributeTypeID(), (int) attributeList.get(k).getEntityAttributeModifier().getValue());
-                            else
-                                nbtCompound.putFloat(attributeList.get(k).getAttributeTypeID(), (float) attributeList.get(k).getEntityAttributeModifier().getValue());
-                            itemStack.setNbt(nbtCompound);
+                    for (int i = 0; i < attributeList.size(); i++)
+                        if (attributeList.get(i).getAttributeTypeID().equals("tiered:generic.durable")) {
+                            if (nbtMap == null)
+                                nbtMap = new HashMap<String, Object>();
+                            nbtMap.put("durable", attributeList.get(i).getEntityAttributeModifier().getValue());
                             break;
                         }
+
+                    // add nbtMap
+                    if (nbtMap != null) {
+                        NbtCompound nbtCompound = itemStack.getNbt();
+                        for (HashMap.Entry<String, Object> entry : nbtMap.entrySet()) {
+                            String key = entry.getKey();
+                            Object value = entry.getValue();
+
+                            // json list will get read as ArrayList class
+                            // json map will get read as linkedtreemap
+                            // json integer is read by gson -> always double
+                            if (value instanceof String)
+                                nbtCompound.putString(key, (String) value);
+                            else if (value instanceof Boolean)
+                                nbtCompound.putBoolean(key, (boolean) value);
+                            else if (value instanceof Double) {
+                                if ((double) value % 1.0 < 0.0001D)
+                                    nbtCompound.putInt(key, (int) Math.round((double) value));
+                                else
+                                    nbtCompound.putDouble(key, (double) value);
+                            }
+                        }
+                        itemStack.setNbt(nbtCompound);
+
+                        // System.out.println(nbtCompound);
+                    }
                 }
             }
         }
