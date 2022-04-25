@@ -10,7 +10,8 @@
     "ItemMixin",
     "ArrowEntityMixin",
     "TridentEntityMixin",
-    "SpectralArrowEntityMixin"
+    "SpectralArrowEntityMixin",
+    "FabricItemMixin"
   ],
   "client": [
     "client.ItemStackClientMixin"
