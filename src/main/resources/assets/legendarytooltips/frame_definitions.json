@@ -5,7 +5,10 @@
             "startColor": "#BABABA",
             "endColor": "#565656",
             "selectors": [
-                "&Tiered={Tier:\"tiered:common\"}"
+                "&Tiered={Tier:\"tiered:common\"}",
+                "&Tiered={Tier:\"tiered:corrodet\"}",
+                "&Tiered={Tier:\"tiered:battered\"}",
+                "&Tiered={Tier:\"tiered:dull\"}"
             ]
         },
         {
@@ -13,7 +16,9 @@
             "startColor": "#3FC43A",
             "endColor": "#133F2A",
             "selectors": [
-                "&Tiered={Tier:\"tiered:uncommon\"}"
+                "&Tiered={Tier:\"tiered:uncommon\"}",
+                "&Tiered={Tier:\"tiered:light\"}",
+                "&Tiered={Tier:\"tiered:hunting\"}"
             ]
         },
         {
@@ -21,7 +26,9 @@
             "startColor": "#163F54",
             "endColor": "#163F54",
             "selectors": [
-                "&Tiered={Tier:\"tiered:rare\"}"
+                "&Tiered={Tier:\"tiered:rare\"}",
+                "&Tiered={Tier:\"tiered:dawnguard\"}",
+                "&Tiered={Tier:\"tiered:longshot\"}"
             ]
         },
         {
@@ -29,7 +36,10 @@
             "startColor": "#380F54",
             "endColor": "#380F54",
             "selectors": [
-                "&Tiered={Tier:\"tiered:epic\"}"
+                "&Tiered={Tier:\"tiered:epic\"}",
+                "&Tiered={Tier:\"tiered:mercy\"}",
+                "&Tiered={Tier:\"tiered:revenant\"}",
+                "&Tiered={Tier:\"tiered:extended\"}"
             ]
         },
         {
@@ -37,7 +47,8 @@
             "startColor": "#008FCC",
             "endColor": "#044B8A",
             "selectors": [
-                "&Tiered={Tier:\"tiered:legendary\"}"
+                "&Tiered={Tier:\"tiered:legendary\"}",
+                "&Tiered={Tier:\"tiered:guardian\"}"
             ]
         },
         {
