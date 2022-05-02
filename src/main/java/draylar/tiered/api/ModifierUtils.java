@@ -3,10 +3,13 @@ package draylar.tiered.api;
 import draylar.tiered.Tiered;
 import draylar.tiered.util.SortList;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -52,6 +55,54 @@ public class ModifierUtils {
             return potentialAttributes.get(new Random().nextInt(potentialAttributes.size()));
         } else
             return null;
+    }
+
+    // Set on
+    public static void setItemStackAttribute(ItemStack stack) {
+        if (stack.getSubNbt(Tiered.NBT_SUBTAG_KEY) == null) {
+
+            // attempt to get a random tier
+            Identifier potentialAttributeID = ModifierUtils.getRandomAttributeIDFor(stack.getItem());
+            // found an ID
+            if (potentialAttributeID != null) {
+                stack.getOrCreateSubNbt(Tiered.NBT_SUBTAG_KEY).putString(Tiered.NBT_SUBTAG_DATA_KEY, potentialAttributeID.toString());
+
+                HashMap<String, Object> nbtMap = Tiered.ATTRIBUTE_DATA_LOADER.getItemAttributes().get(new Identifier(potentialAttributeID.toString())).getNbtValues();
+
+                // add durability nbt
+                List<AttributeTemplate> attributeList = Tiered.ATTRIBUTE_DATA_LOADER.getItemAttributes().get(new Identifier(potentialAttributeID.toString())).getAttributes();
+                for (int i = 0; i < attributeList.size(); i++)
+                    if (attributeList.get(i).getAttributeTypeID().equals("tiered:generic.durable")) {
+                        if (nbtMap == null)
+                            nbtMap = new HashMap<String, Object>();
+                        nbtMap.put("durable", attributeList.get(i).getEntityAttributeModifier().getValue());
+                        break;
+                    }
+                // add nbtMap
+                if (nbtMap != null) {
+                    NbtCompound nbtCompound = stack.getNbt();
+                    for (HashMap.Entry<String, Object> entry : nbtMap.entrySet()) {
+                        String key = entry.getKey();
+                        Object value = entry.getValue();
+
+                        // json list will get read as ArrayList class
+                        // json map will get read as linkedtreemap
+                        // json integer is read by gson -> always double
+                        if (value instanceof String)
+                            nbtCompound.putString(key, (String) value);
+                        else if (value instanceof Boolean)
+                            nbtCompound.putBoolean(key, (boolean) value);
+                        else if (value instanceof Double) {
+                            if ((double) value % 1.0 < 0.0001D)
+                                nbtCompound.putInt(key, (int) Math.round((double) value));
+                            else
+                                nbtCompound.putDouble(key, (double) value);
+                        }
+                    }
+                    stack.setNbt(nbtCompound);
+                }
+            }
+        }
     }
 
     private ModifierUtils() {
