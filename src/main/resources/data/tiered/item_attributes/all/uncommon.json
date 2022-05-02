@@ -2,31 +2,31 @@
     "id": "tiered:uncommon",
     "verifiers": [
         {
-            "tag": "fabric:helmets"
+            "tag": "c:helmets"
         },
         {
-            "tag": "fabric:chestplates"
+            "tag": "c:chestplates"
         },
         {
-            "tag": "fabric:leggings"
+            "tag": "c:leggings"
         },
         {
-            "tag": "fabric:boots"
+            "tag": "c:boots"
         },
         {
-            "tag": "fabric:swords"
+            "tag": "c:swords"
         },
         {
-            "tag": "fabric:shovels"
+            "tag": "c:shovels"
         },
         {
-            "tag": "fabric:pickaxes"
+            "tag": "c:pickaxes"
         },
         {
-            "tag": "fabric:hoes"
+            "tag": "c:hoes"
         },
         {
-            "tag": "fabric:axes"
+            "tag": "c:axes"
         }
     ],
     "weight": 25,

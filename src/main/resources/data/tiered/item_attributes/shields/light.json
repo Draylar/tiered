@@ -2,7 +2,7 @@
     "id": "tiered:light",
     "verifiers": [
         {
-            "tag": "fabric:shields"
+            "tag": "c:shields"
         }
     ],
     "weight": 25,

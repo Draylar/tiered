@@ -52,9 +52,12 @@ dependencies {
 	modImplementation include ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"), {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	// Additional Entity Attributes
 	modImplementation include ("com.github.DaFuqs:AdditionalEntityAttributes:d0cd35d"), {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	// Autotag
+	modImplementation include ("com.github.apace100:autotag:1.18-SNAPSHOT")
 }
 
 processResources {

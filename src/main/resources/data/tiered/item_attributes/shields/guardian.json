@@ -2,7 +2,7 @@
   "id": "tiered:guardian",
   "verifiers": [
     {
-      "tag": "fabric:shields"
+      "tag": "c:shields"
     }
   ],
   "weight": 3,

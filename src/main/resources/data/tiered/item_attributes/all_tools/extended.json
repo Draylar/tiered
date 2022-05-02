@@ -2,19 +2,19 @@
   "id": "tiered:extended",
   "verifiers": [
     {
-      "tag": "fabric:swords"
+      "tag": "c:swords"
     },
     {
-      "tag": "fabric:axes"
+      "tag": "c:axes"
     },
     {
-      "tag": "fabric:pickaxes"
+      "tag": "c:pickaxes"
     },
     {
-      "tag": "fabric:shovels"
+      "tag": "c:shovels"
     },
     {
-      "tag": "fabric:hoes"
+      "tag": "c:hoes"
     }
   ],
   "weight": 10,

@@ -2,10 +2,10 @@
     "id": "tiered:longshot",
     "verifiers": [
         {
-            "id": "minecraft:bow"
+            "tag": "c:bows"
         },
         {
-            "id": "minecraft:crossbow"
+            "tag": "c:crossbows"
         }
     ],
     "weight": 15,

@@ -2,10 +2,10 @@
   "id": "tiered:critical",
   "verifiers": [
     {
-      "tag": "fabric:swords"
+      "tag": "c:swords"
     },
     {
-      "tag": "fabric:axes"
+      "tag": "c:axes"
     }
   ],
   "weight": 9,

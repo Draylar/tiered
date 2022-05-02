@@ -12,13 +12,13 @@ Tiered is entirely data-driven, which means you can add, modify, and remove modi
   "id": "tiered:hasteful",
   "verifiers": [
     {
-      "tag": "fabric:pickaxes"
+      "tag": "c:pickaxes"
     },
     {
-      "tag": "fabric:shovels"
+      "tag": "c:shovels"
     },
     {
-      "tag": "fabric:axes"
+      "tag": "c:axes"
     }
   ],
   "weight": 10,
@@ -54,10 +54,11 @@ A specific item ID can be specified with:
 
 and a tag can be specified with:
 ```json
-"tag": "fabric:helmets"
+"tag": "c:helmets"
 ```
 
-Tiered provides 4 armor tags (`fabric:helmets`, `fabric:chestplates`, `fabric:leggings`, `fabric:boots`) and 6 tool tags (`fabric:axes`, `faric:hoes`, `fabric:pickaxes`, `fabric:shields`, `fabric:shovels` and `fabric:swords`).
+Tiered doesn't provide tags but [AutoTag](https://github.com/apace100/autotag) (which is included in this mod) generates several tags which can be found on the repo [README](https://github.com/apace100/autotag#readme).
+Example tags which AutoTag provides: `c:tools`,`c:pickaxes`,`c:axes`,`c:shovels`,`c:hoes`,`c:swords`,`c:armor`,`c:helmets`,`c:chestplates`,`c:leggings`,`c:boots` and several more.
 
 ### Weight
 
@@ -74,7 +75,6 @@ Caution! Once added nbt keys won't get removed when once applied, just the value
   "key": "value"
 }
 ```
-
 
 ### License
 Tiered is licensed under MIT. You are free to use the code inside this repo as you want.

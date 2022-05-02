@@ -2,16 +2,16 @@
   "id": "tiered:unchained",
   "verifiers": [
     {
-      "tag": "fabric:helmets"
+      "tag": "c:helmets"
     },
     {
-      "tag": "fabric:chestplates"
+      "tag": "c:chestplates"
     },
     {
-      "tag": "fabric:leggings"
+      "tag": "c:leggings"
     },
     {
-      "tag": "fabric:boots"
+      "tag": "c:boots"
     }
   ],
   "weight": 10,

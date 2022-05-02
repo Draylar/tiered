@@ -2,7 +2,7 @@
   "id": "tiered:dawnguard",
   "verifiers": [
     {
-      "tag": "fabric:shields"
+      "tag": "c:shields"
     }
   ],
   "weight": 15,

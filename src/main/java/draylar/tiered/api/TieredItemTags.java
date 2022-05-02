@@ -7,16 +7,16 @@ import net.minecraft.util.registry.Registry;
 
 public class TieredItemTags {
 
-    public static final TagKey<Item> HELMETS = register("helmets");
-    public static final TagKey<Item> CHESTPLATES = register("chestplates");
-    public static final TagKey<Item> LEGGINGS = register("leggings");
-    public static final TagKey<Item> BOOTS = register("boots");
-    public static final TagKey<Item> SHIELDS = register("shields");
-    public static final TagKey<Item> SWORDS = register("swords");
-    public static final TagKey<Item> SHOVELS = register("shovels");
-    public static final TagKey<Item> PICKAXES = register("pickaxes");
-    public static final TagKey<Item> HOES = register("hoes");
-    public static final TagKey<Item> AXES = register("axes");
+    // public static final TagKey<Item> HELMETS = register("helmets");
+    // public static final TagKey<Item> CHESTPLATES = register("chestplates");
+    // public static final TagKey<Item> LEGGINGS = register("leggings");
+    // public static final TagKey<Item> BOOTS = register("boots");
+    // public static final TagKey<Item> SHIELDS = register("shields");
+    // public static final TagKey<Item> SWORDS = register("swords");
+    // public static final TagKey<Item> SHOVELS = register("shovels");
+    // public static final TagKey<Item> PICKAXES = register("pickaxes");
+    // public static final TagKey<Item> HOES = register("hoes");
+    // public static final TagKey<Item> AXES = register("axes");
 
     private TieredItemTags() {
     }

@@ -2,10 +2,10 @@
   "id": "tiered:keen",
   "verifiers": [
     {
-      "tag": "fabric:swords"
+      "tag": "c:swords"
     },
     {
-      "tag": "fabric:axes"
+      "tag": "c:axes"
     }
   ],
   "weight": 10,

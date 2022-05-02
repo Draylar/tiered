@@ -2,7 +2,7 @@
   "id": "tiered:corrodet",
   "verifiers": [
     {
-      "tag": "fabric:shields"
+      "tag": "c:shields"
     }
   ],
   "weight": 50,
