@@ -11,7 +11,8 @@
     "ArrowEntityMixin",
     "TridentEntityMixin",
     "SpectralArrowEntityMixin",
-    "FabricItemMixin"
+    "FabricItemMixin",
+    "LootTableMixin"
   ],
   "client": [
     "client.ItemStackClientMixin"
