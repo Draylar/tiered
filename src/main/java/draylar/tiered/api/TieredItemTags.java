@@ -5,6 +5,7 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+//Since v1.0.3 unused cause of AutoTag usage
 public class TieredItemTags {
 
     // public static final TagKey<Item> HELMETS = register("helmets");
