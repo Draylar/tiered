@@ -1,7 +1,7 @@
 {
     "definitions": [
         {
-            "index": 0,
+            "index": 1,
             "startColor": "#BABABA",
             "endColor": "#565656",
             "selectors": [
@@ -12,7 +12,7 @@
             ]
         },
         {
-            "index": 1,
+            "index": 2,
             "startColor": "#3FC43A",
             "endColor": "#133F2A",
             "selectors": [
@@ -22,7 +22,7 @@
             ]
         },
         {
-            "index": 2,
+            "index": 3,
             "startColor": "#163F54",
             "endColor": "#163F54",
             "selectors": [
@@ -32,7 +32,7 @@
             ]
         },
         {
-            "index": 3,
+            "index": 4,
             "startColor": "#380F54",
             "endColor": "#380F54",
             "selectors": [
@@ -43,40 +43,40 @@
             ]
         },
         {
-            "index": 4,
-            "startColor": "#008FCC",
-            "endColor": "#044B8A",
+            "index": 5,
+            "startColor": "#6D3C24",
+            "endColor": "#6D3C24",
             "selectors": [
                 "&Tiered={Tier:\"tiered:legendary\"}",
                 "&Tiered={Tier:\"tiered:guardian\"}"
             ]
         },
         {
-            "index": 5,
+            "index": 6,
             "startColor": "#5C4C2D",
             "endColor": "#5C4C2D",
             "selectors": []
         },
         {
-            "index": 6,
+            "index": 7,
             "startColor": "#705A87",
             "endColor": "#393556",
             "selectors": []
         },
         {
-            "index": 7,
+            "index": 8,
             "startColor": "#7D8A91",
             "endColor": "#7D8A91",
             "selectors": []
         },
         {
-            "index": 8,
+            "index": 9,
             "startColor": "#A591B6",
             "endColor": "#A591B6",
             "selectors": []
         },
         {
-            "index": 9,
+            "index": 10,
             "startColor": "#FFFADB",
             "endColor": "#FFDFAD",
             "selectors": []
