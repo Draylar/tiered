@@ -21,6 +21,9 @@
     ],
     "client": [
       "draylar.tiered.TieredClient"
+    ],
+    "modmenu": [
+      "draylar.tiered.config.ModMenuIntegration"
     ]
   },
   "mixins": [
@@ -30,6 +33,7 @@
     "fabricloader": ">=0.13.3",
     "fabric": "*",
     "minecraft": "1.18.x",
-    "java": ">=17"
+    "java": ">=17",
+    "cloth-config2": ">=6.2.57"
   }
 }

@@ -4,16 +4,15 @@ import draylar.tiered.api.AttributeTemplate;
 import draylar.tiered.api.CustomEntityAttributes;
 import draylar.tiered.api.ModifierUtils;
 import draylar.tiered.api.TieredItemTags;
+import draylar.tiered.config.ConfigInit;
 import draylar.tiered.api.PotentialAttribute;
 import draylar.tiered.data.AttributeDataLoader;
 import io.netty.buffer.Unpooled;
-import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ArmorItem;
@@ -52,6 +51,7 @@ public class Tiered implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ConfigInit.init();
         TieredItemTags.init();
         CustomEntityAttributes.init();
         registerAttributeSyncer();

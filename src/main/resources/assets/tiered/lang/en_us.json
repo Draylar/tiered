@@ -39,5 +39,8 @@
   "tiered:battered.label": "Battered",
   "tiered:hunting.label": "Hunting",
   "tiered:longshot.label": "Longshot",
-  "tiered:revenant.label": "Revenant"
+  "tiered:revenant.label": "Revenant",
+
+  "text.autoconfig.tiered.title": "Tiered Config",
+  "text.autoconfig.tiered.option.lootContainerModifier": "Loot Container Modifier"
 }
